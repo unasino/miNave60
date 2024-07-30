@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor de Páginas Futurista</title>
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #f4f7f6;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #141E30, #243B55);
+      color: #fff;
+      padding: 15px 30px;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    header .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    header .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 30px;
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    header .navbar a.active, header .navbar a:hover {
+      background-color: #00b894;
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .container {
+      margin-top: 80px; /* Adjusted for fixed header height */
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+    }
+
+    .section {
+      display: none;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      background: #212121;
+      position: relative;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section iframe {
+      width: 100%;
+      height: 100vh; /* Increased height to show more content */
+      border: none;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: #141E30;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    footer a {
+      color: #00b894;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+    }
+  </style>
+  
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="#" onclick="showSection('section1')" id="navSection1">📝</a>
+      <a href="#" onclick="showSection('section2')" id="navSection2">📅</a>
+      <a href="#" onclick="showSection('section3')" id="navSection3">📆</a>
+      <a href="#" onclick="showSection('section4')" id="navSection4">📊</a>
+      <a href="#" onclick="showSection('section5')" id="navSection5">📚</a>
+
+    </nav>
+  </header>
+<br>
+<br>
+<br>
+
+  <iframe src="prueba2.html" style="border:none; width:75%; height:150px;"></iframe>
+
+
+  <div class="container">
+    <div id="section1" class="section animate__animated">
+      <iframe src="https://unasino.github.io/listaTareas/" title="Página 1"></iframe>
+    </div>
+    <div id="section2" class="section animate__animated">
+      <iframe src="https://unasino.github.io/organizacionSemanal/" title="Página 2"></iframe>
+    </div>
+    <div id="section3" class="section animate__animated">
+      <iframe src="https://unasino.github.io/organizacionDiaria/" title="Página 3"></iframe>
+    </div>
+    <div id="section4" class="section animate__animated">
+      <iframe src="https://unasino.github.io/gestorCursos/" title="Página 4"></iframe>
+    </div>
+    <div id="section5" class="section animate__animated">
+      <iframe src="https://unasino.github.io/gestorCursos/" title="Página 5"></iframe>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS, Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  <script>
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('.navbar a');
+
+      sections.forEach(section => {
+        section.classList.remove('active');
+        section.style.animation = 'fadeOut 0.5s ease-in-out';
+        setTimeout(() => section.style.animation = '', 500);
+      });
+
+      navLinks.forEach(link => link.classList.remove('active'));
+
+      const targetSection = document.getElementById(sectionId);
+      targetSection.classList.add('active');
+      targetSection.style.animation = 'fadeIn 0.5s ease-in-out';
+      setTimeout(() => targetSection.style.animation = '', 500);
+
+      const navLink = document.getElementById('nav' + sectionId.charAt(0).toUpperCase() + sectionId.slice(1));
+      navLink.classList.add('active');
+    }
+
+    
+  </script>
+</body>
+</html>
