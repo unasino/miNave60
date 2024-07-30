@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Texto Animado</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: transparent; /* Fondo transparente */
+      margin: 0; /* Eliminar márgenes adicionales */
+    }
+
+    .quote {
+      font-size: 24px;
+      line-height: 1.6;
+      color: #b75af1;
+      position: relative;
+      overflow: hidden;
+      white-space: pre-line;
+      animation: fadeInText 1s ease-out;
+      margin: 0; /* Eliminar márgenes adicionales */
+    }
+
+    .quote::after {
+      content: '|';
+      position: absolute;
+      right: -0.15em;
+      animation: blink-caret 0.75s step-end infinite;
+      
+    }
+
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes blink-caret {
+      from, to {
+        border-color: transparent;
+      }
+      50% {
+        border-color: #ff7f50;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .quote {
+        font-size: 18px;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+    
+  <div class="quote animate__animated animate__fadeIn" id="quoteText"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var quotes = [
+        "La verdad puede doler, pero la mentira duele mucho más.",
+        "El éxito no es definitivo, el fracaso no es fatal: lo que cuenta es el coraje para continuar."
+      ];
+
+      function getRandomQuote() {
+        return quotes[Math.floor(Math.random() * quotes.length)];
+      }
+
+      function typeWriter(text, i) {
+        if (i < text.length) {
+          document.getElementById('quoteText').textContent += text.charAt(i);
+          setTimeout(() => typeWriter(text, i + 1), 50);
+        }
+      }
+
+      function displayRandomQuote() {
+        var quote = getRandomQuote();
+        var quoteElement = document.getElementById('quoteText');
+        quoteElement.textContent = '';
+        setTimeout(() => typeWriter(quote, 0), 500);
+      }
+
+      displayRandomQuote();
+    });
+  </script>
+</body>
+</html>
