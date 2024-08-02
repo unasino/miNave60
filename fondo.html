@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arte Visual Futurista</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(30,30,30,1) 50%, rgba(0,0,0,1) 100%);
+            animation: gradientBackground 30s ease infinite;
+            perspective: 1200px;
+        }
+
+        @keyframes gradientBackground {
+            0% { background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(30,30,30,1) 50%, rgba(0,0,0,1) 100%); }
+            50% { background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(50,50,50,1) 50%, rgba(0,0,0,1) 100%); }
+            100% { background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(30,30,30,1) 50%, rgba(0,0,0,1) 100%); }
+        }
+
+        .sphere {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 200px rgba(255, 255, 255, 0.8);
+            animation: rotate 20s linear infinite;
+            filter: blur(8px);
+            transform-style: preserve-3d;
+        }
+
+        .sphere:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            animation-duration: 15s;
+        }
+
+        .sphere:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            animation-duration: 20s;
+        }
+
+        .sphere:nth-child(3) {
+            width: 500px;
+            height: 500px;
+            animation-duration: 25s;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        .explosion {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1500px;
+            height: 1500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            animation: explode 5s linear infinite, glow 3s ease-in-out infinite alternate;
+            opacity: 0.5;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        @keyframes explode {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            50% { transform: translate(-50%, -50%) scale(1.5); }
+            100% { transform: translate(-50%, -50%) scale(0); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 150px rgba(255, 255, 255, 0.6); }
+            100% { box-shadow: 0 0 500px rgba(255, 255, 255, 1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="sphere"></div>
+    <div class="sphere"></div>
+    <div class="sphere"></div>
+    <div class="explosion"></div>
+    <div class="content">
+        <!-- Contenido de fondo opcional -->
+    </div>
+</body>
+</html>
