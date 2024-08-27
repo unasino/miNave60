@@ -142,17 +142,14 @@
       <a href="#" onclick="showSection('section1')" id="navSection1">📝</a>
       <a href="#" onclick="showSection('section2')" id="navSection2">📅</a>
       <a href="#" onclick="showSection('section3')" id="navSection3">📆</a>
-      <a href="#" onclick="showSection('section4')" id="navSection4">📊</a>
+      <a href="#" onclick="showSection('section4')" id="navSection4" class="active">📊</a> <!-- Marked as active by default -->
       <a href="#" onclick="showSection('section5')" id="navSection5">📚</a>
-
     </nav>
   </header>
-<br>
-<br>
-<br>
+
+  <br><br><br>
 
   <iframe src="citas.html" style="border:none; width:75%; height:150px;"></iframe>
-
 
   <div class="container">
     <div id="section1" class="section animate__animated">
@@ -164,7 +161,7 @@
     <div id="section3" class="section animate__animated">
       <iframe src="https://unasino.github.io/organizacionDiaria/" title="Página 3"></iframe>
     </div>
-    <div id="section4" class="section animate__animated">
+    <div id="section4" class="section animate__animated active"> <!-- Section 4 is active by default -->
       <iframe src="https://unasino.github.io/registroPomodoroDiario/" title="Página 4"></iframe>
     </div>
     <div id="section5" class="section animate__animated">
@@ -197,7 +194,10 @@
       navLink.classList.add('active');
     }
 
-    
+    // Automatically show section 4 on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('section4');
+    });
   </script>
 </body>
 </html>
